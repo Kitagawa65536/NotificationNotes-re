@@ -10,6 +10,8 @@ android {
         versionCode 9
         versionName "1.8"
     }
+    namespace "com.khuttun.notificationnotes"
+
     buildTypes {
         release {
             minifyEnabled false

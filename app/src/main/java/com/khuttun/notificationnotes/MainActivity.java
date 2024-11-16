@@ -15,48 +15,40 @@ import android.view.View;
 
 import java.util.ArrayList;
 
-public class MainActivity extends ThemedActivity
-{
+public class MainActivity extends ThemedActivity {
     /**
      * Observe changes in notes list and display an alternate view if the list is empty.
      */
-    private static class EmptyNoteListObserver extends RecyclerView.AdapterDataObserver
-    {
+    private static class EmptyNoteListObserver extends RecyclerView.AdapterDataObserver {
         private RecyclerView noteList;
         private View alternateView;
 
-        EmptyNoteListObserver(RecyclerView noteList, View alternateView)
-        {
+        EmptyNoteListObserver(RecyclerView noteList, View alternateView) {
             this.noteList = noteList;
             this.alternateView = alternateView;
             this.noteList.getAdapter().registerAdapterDataObserver(this);
         }
 
         @Override
-        public void onChanged()
-        {
-            if (Globals.LOG) Log.d(Globals.TAG, "List changed. Count " + noteList.getAdapter().getItemCount());
-            if (noteList.getAdapter().getItemCount() > 0)
-            {
+        public void onChanged() {
+            if (Globals.LOG)
+                Log.d(Globals.TAG, "List changed. Count " + noteList.getAdapter().getItemCount());
+            if (noteList.getAdapter().getItemCount() > 0) {
                 this.noteList.setVisibility(View.VISIBLE);
                 this.alternateView.setVisibility(View.GONE);
-            }
-            else
-            {
+            } else {
                 this.noteList.setVisibility(View.GONE);
                 this.alternateView.setVisibility(View.VISIBLE);
             }
         }
 
         @Override
-        public void onItemRangeInserted(int positionStart, int itemCount)
-        {
+        public void onItemRangeInserted(int positionStart, int itemCount) {
             onChanged();
         }
 
         @Override
-        public void onItemRangeRemoved(int positionStart, int itemCount)
-        {
+        public void onItemRangeRemoved(int positionStart, int itemCount) {
             onChanged();
         }
     }
@@ -64,15 +56,13 @@ public class MainActivity extends ThemedActivity
     /**
      * AddNoteResult is used to store the result from "Add note" activity.
      */
-    private static class AddNoteResult
-    {
+    private static class AddNoteResult {
         public int reqCode;
         public String title;
         public String text;
         public int noteIndex;
 
-        public AddNoteResult(int reqCode, String title, String text, int noteIndex)
-        {
+        public AddNoteResult(int reqCode, String title, String text, int noteIndex) {
             this.reqCode = reqCode;
             this.title = title;
             this.text = text;
@@ -80,8 +70,7 @@ public class MainActivity extends ThemedActivity
         }
 
         @Override
-        public String toString()
-        {
+        public String toString() {
             return "{" + this.reqCode + ", " + this.title + ", " + this.text + ", " + this.noteIndex + "}";
         }
     }
@@ -90,22 +79,18 @@ public class MainActivity extends ThemedActivity
     private AddNoteResult addNoteResult;
     private EmptyNoteListObserver noteListObserver;
 
-    public void addNote(View view)
-    {
+    public void addNote(View view) {
         startActivityForResult(new Intent(this, AddNoteActivity.class), AddNoteActivity.ADD_REQ);
     }
 
-    public void deleteNote(int notePos)
-    {
+    public void deleteNote(int notePos) {
         this.notesListAdapter.deleteNote(notePos);
     }
 
     @Override
-    protected void onActivityResult(int requestCode, int resultCode, Intent data)
-    {
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         if (Globals.LOG) Log.d(Globals.TAG, "Req " + requestCode + ", result " + resultCode);
-        if (resultCode == RESULT_OK)
-        {
+        if (resultCode == RESULT_OK) {
             this.addNoteResult = new AddNoteResult(
                     requestCode,
                     data.getStringExtra(AddNoteActivity.TITLE),
@@ -116,8 +101,7 @@ public class MainActivity extends ThemedActivity
     }
 
     @Override
-    protected void onCreate(Bundle savedInstanceState)
-    {
+    protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         if (Globals.LOG) Log.d(Globals.TAG, "Creating MainActivity");
         setContentView(R.layout.activity_main);
@@ -135,29 +119,23 @@ public class MainActivity extends ThemedActivity
     }
 
     @Override
-    public boolean onCreateOptionsMenu(Menu menu)
-    {
+    public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.menu_main, menu);
         return true;
     }
 
     @Override
-    public boolean onOptionsItemSelected(MenuItem item)
-    {
-        switch (item.getItemId())
-        {
-            case R.id.settings:
-                if (Globals.LOG) Log.d(Globals.TAG, "Settings menu item selected");
-                startActivity(new Intent(this, SettingsActivity.class));
-                break;
+    public boolean onOptionsItemSelected(MenuItem item) {
+        if (item.getItemId() == R.id.settings) {
+            if (Globals.LOG) Log.d(Globals.TAG, "Settings menu item selected");
+            startActivity(new Intent(this, SettingsActivity.class));
         }
 
         return true;
     }
 
     @Override
-    protected void onPause()
-    {
+    protected void onPause() {
         super.onPause();
         if (Globals.LOG) Log.d(Globals.TAG, "Pausing MainActivity");
 
@@ -167,8 +145,7 @@ public class MainActivity extends ThemedActivity
     }
 
     @Override
-    protected void onResume()
-    {
+    protected void onResume() {
         super.onResume();
         if (Globals.LOG) Log.d(Globals.TAG, "Resuming MainActivity");
 
@@ -176,11 +153,10 @@ public class MainActivity extends ThemedActivity
                 PreferenceManager.getDefaultSharedPreferences(this).getString(Globals.NOTES_PREF_NAME, "[]")));
 
         // Unprocessed result from "Add note" activity
-        if (this.addNoteResult != null)
-        {
-            if (Globals.LOG) Log.d(Globals.TAG, "Result from AddNoteActivity: " + this.addNoteResult);
-            switch (this.addNoteResult.reqCode)
-            {
+        if (this.addNoteResult != null) {
+            if (Globals.LOG)
+                Log.d(Globals.TAG, "Result from AddNoteActivity: " + this.addNoteResult);
+            switch (this.addNoteResult.reqCode) {
                 case AddNoteActivity.ADD_REQ:
                     this.notesListAdapter.addNote(this.addNoteResult.title, this.addNoteResult.text);
                     break;
@@ -195,12 +171,10 @@ public class MainActivity extends ThemedActivity
         }
     }
 
-    private void migratePreferences()
-    {
+    private void migratePreferences() {
         // The storage of the notes has changed in version 1.6. Migrate old notes if found.
         String oldPref = getPreferences(Context.MODE_PRIVATE).getString(Globals.NOTES_PREF_NAME, null);
-        if (oldPref != null)
-        {
+        if (oldPref != null) {
             if (Globals.LOG) Log.d(Globals.TAG, "Migrating old notes pref");
 
             // Take into account also possibility that there's already notes stored to the new storage

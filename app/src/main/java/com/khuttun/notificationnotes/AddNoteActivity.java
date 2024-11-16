@@ -55,22 +55,20 @@ public class AddNoteActivity extends ThemedActivity
     @Override
     public boolean onOptionsItemSelected(MenuItem item)
     {
-        switch (item.getItemId())
+        if (item.getItemId() == R.id.save_note)
         {
-            case R.id.save_note:
-                String title = this.titleInput.getText().toString();
-                String text = this.textInput.getText().toString();
-                if (Globals.LOG) Log.d(Globals.TAG, "Saving note. Title: " + title + ", Text: " + text);
+            String title = this.titleInput.getText().toString();
+            String text = this.textInput.getText().toString();
+            if (Globals.LOG) Log.d(Globals.TAG, "Saving note. Title: " + title + ", Text: " + text);
 
-                Intent data = new Intent();
-                data.putExtra(TITLE, title);
-                data.putExtra(TEXT, text);
-                data.putExtra(NOTE_INDEX, this.noteIndex);
+            Intent data = new Intent();
+            data.putExtra(TITLE, title);
+            data.putExtra(TEXT, text);
+            data.putExtra(NOTE_INDEX, this.noteIndex);
 
-                setResult(RESULT_OK, data);
-                finish();
+            setResult(RESULT_OK, data);
+            finish();
 
-                break;
         }
 
         return true;
