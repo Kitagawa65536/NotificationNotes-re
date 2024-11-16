@@ -10,7 +10,7 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     android:clipToPadding="false">
 
-    <android.support.v7.widget.RecyclerView
+    <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/notes_recycler_view"
         android:scrollbars="vertical"
         android:layout_alignParentTop="true"
@@ -28,7 +28,7 @@
         android:visibility="gone"
         android:text="@string/no_notes"/>
 
-    <android.support.design.widget.FloatingActionButton
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/add_button"
         android:src="@drawable/add"
         android:layout_alignParentBottom="true"

@@ -8,11 +8,12 @@ import android.content.Context;
 import android.content.Intent;
 import android.graphics.Typeface;
 import android.os.Build;
-import android.support.v4.app.NotificationCompat;
 import android.text.Spannable;
 import android.text.SpannableString;
 import android.text.style.StyleSpan;
 import android.util.Log;
+
+import androidx.core.app.NotificationCompat;
 
 import java.util.ArrayList;
 
@@ -47,7 +48,7 @@ public class NotificationMgr
         this.notificationBuilder.setOngoing(true);
         this.notificationBuilder.setPriority(NotificationCompat.PRIORITY_LOW);
         this.notificationBuilder.setContentIntent(PendingIntent
-                .getActivity(this.context, 0, new Intent(this.context, MainActivity.class), 0));
+                .getActivity(this.context, 0, new Intent(this.context, MainActivity.class), PendingIntent.FLAG_IMMUTABLE));
     }
 
     public void setNotification(NotificationNote note)

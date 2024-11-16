@@ -2,8 +2,9 @@ package com.khuttun.notificationnotes;
 
 import android.os.Bundle;
 import android.preference.PreferenceManager;
-import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 public class ThemedActivity extends AppCompatActivity
 {

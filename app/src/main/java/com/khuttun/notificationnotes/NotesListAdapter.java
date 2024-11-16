@@ -3,15 +3,16 @@ package com.khuttun.notificationnotes;
 import android.app.Activity;
 import android.content.Intent;
 import android.preference.PreferenceManager;
-import android.support.v4.app.FragmentManager;
-import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.SwitchCompat;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.CompoundButton;
 import android.widget.TextView;
+
+import androidx.appcompat.widget.SwitchCompat;
+import androidx.fragment.app.FragmentManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
 

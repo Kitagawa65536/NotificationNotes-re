@@ -1,12 +1,12 @@
 apply plugin: 'com.android.application'
 
 android {
-    compileSdkVersion 26
+    compileSdkVersion 35
 
     defaultConfig {
         applicationId "com.khuttun.notificationnotes"
         minSdkVersion 15
-        targetSdkVersion 26
+        targetSdkVersion 35 // 最新のターゲットSDK
         versionCode 9
         versionName "1.8"
     }
@@ -15,15 +15,27 @@ android {
     buildTypes {
         release {
             minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+    compileOptions {
+        sourceCompatibility = JavaVersion.VERSION_17
+        targetCompatibility = JavaVersion.VERSION_17
+    }
+
+    java {
+        toolchain {
+            languageVersion.set(JavaLanguageVersion.of(17))
         }
     }
 }
 
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
-    implementation 'com.android.support:appcompat-v7:26.1.0'
-    implementation 'com.android.support:design:26.1.0'
-    implementation 'com.android.support:recyclerview-v7:26.1.0'
-    implementation 'com.android.support:cardview-v7:26.1.0'
-    implementation 'com.android.support:preference-v14:26.1.0'
+    // AndroidXライブラリを使用
+    implementation 'androidx.appcompat:appcompat:1.6.1'
+    implementation 'com.google.android.material:material:1.9.0'
+    implementation 'androidx.recyclerview:recyclerview:1.3.0'
+    implementation 'androidx.cardview:cardview:1.0.0'
+    implementation 'androidx.preference:preference:1.2.0'
 }
