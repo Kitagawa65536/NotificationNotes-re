@@ -1,4 +1,4 @@
-package com.khuttun.notificationnotes;
+package com.notification.notificationnotes;
 
 /**
  * Interface for controller that handles NotificationNote UI actions.

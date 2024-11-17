@@ -4,13 +4,13 @@ android {
     compileSdkVersion 35
 
     defaultConfig {
-        applicationId "com.khuttun.notificationnotes"
+        applicationId "com.notification.notificationnotes"
         minSdkVersion 15
         targetSdkVersion 35 // 最新のターゲットSDK
         versionCode 9
         versionName "1.8"
     }
-    namespace "com.khuttun.notificationnotes"
+    namespace "com.notification.notificationnotes"
 
     buildTypes {
         release {

@@ -1,4 +1,4 @@
-package com.khuttun.notificationnotes;
+package com.notification.notificationnotes;
 
 import android.app.Notification;
 import android.app.NotificationChannel;
