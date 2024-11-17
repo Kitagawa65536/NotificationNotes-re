@@ -3,6 +3,7 @@ package com.khuttun.notificationnotes;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.util.Log;
@@ -107,6 +108,9 @@ public class MainActivity extends ThemedActivity {
         if (Globals.LOG) Log.d(Globals.TAG, "Creating MainActivity");
         setContentView(R.layout.activity_main);
 
+        // 権限リクエストの追加
+        requestNotificationPermission();
+
         this.notesListAdapter = new NotesListAdapter(this, getSupportFragmentManager());
 
         RecyclerView noteListView = (RecyclerView) findViewById(R.id.notes_recycler_view);
@@ -198,6 +202,27 @@ public class MainActivity extends ThemedActivity {
             SharedPreferences.Editor oldPrefsEditor = getPreferences(Context.MODE_PRIVATE).edit();
             oldPrefsEditor.remove(Globals.NOTES_PREF_NAME);
             oldPrefsEditor.commit();
+        }
+    }
+
+    @Override
+    public void onRequestPermissionsResult(int requestCode, String[] permissions, int[] grantResults) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+        if (requestCode == 1) {
+            if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+                if (Globals.LOG) Log.d(Globals.TAG, "Notification permission granted");
+            } else {
+                if (Globals.LOG) Log.d(Globals.TAG, "Notification permission denied");
+            }
+        }
+    }
+
+    private void requestNotificationPermission() {
+        if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.TIRAMISU) {
+            if (checkSelfPermission(android.Manifest.permission.POST_NOTIFICATIONS)
+                    != PackageManager.PERMISSION_GRANTED) {
+                requestPermissions(new String[]{android.Manifest.permission.POST_NOTIFICATIONS}, 1);
+            }
         }
     }
 }
