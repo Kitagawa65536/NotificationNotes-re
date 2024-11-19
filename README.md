@@ -1,13 +1,13 @@
-# NotificationNotes-Re (NotificationNotes Forked)
+# Pin Notify Notes (NotificationNotes Forked)
 
 This project is a fork of the simple notification memo app **Notification Notes**.  
 Original repository: [khuttun/NotificationNotes](https://github.com/khuttun/NotificationNotes)
 
 ---
 
-## What is NotificationNotes?
+## What is Pin Notify Notes?
 
-Notification Notes is a simple Android app for displaying your notes as notifications.  
+Pin Notify Notes is a simple Android app for displaying your notes as notifications.  
 The notes are shown as low-priority notifications and are preserved even after restarting the app.
 
 ---
@@ -39,7 +39,7 @@ For now, no major feature additions or extensive changes are planned, unless pla
 
 There is no official schedule for the store launch yet.
 
-1. Download the APK from the Releases page(to be released at some point).
+1. Download the APK from the Releases page (to be released at some point).
 2. Install it on your device.
 
 ---
@@ -47,6 +47,6 @@ There is no official schedule for the store launch yet.
 ## License
 
 This project is provided under the original MIT License.  
-Original repository: [khuttun/NotificationNotes](https://github.com/khuttun/NotificationNotes) 
+Original repository: [khuttun/NotificationNotes](https://github.com/khuttun/NotificationNotes)
 
 Maintenance and improvements in this fork are handled by [Kitagawa65536](https://github.com/Kitagawa65536)

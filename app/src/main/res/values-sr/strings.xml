@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">Обавештавајуће белешке-Re</string>
+    <string name="app_name">Pričvrsti Obaveštenja Beleške</string>
     <string name="save_note_text">САЧУВАЈ</string>
     <string name="title_hint">Наслов</string>
     <string name="text_hint">Текст белешке</string>

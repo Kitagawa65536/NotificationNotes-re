@@ -25,9 +25,9 @@ public class NotificationMgr
     private static final String CHANNEL_ID = "notes";
     private static final int GROUP_NOTIF_ID = -1000;
 
-    private Context context;
-    private NotificationManager notificationManager;
-    private NotificationCompat.Builder notificationBuilder;
+    private final Context context;
+    private final NotificationManager notificationManager;
+    private final NotificationCompat.Builder notificationBuilder;
 
     public NotificationMgr(Context context)
     {

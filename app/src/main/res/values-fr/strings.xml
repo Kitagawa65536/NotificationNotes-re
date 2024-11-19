@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">Notification Notes-Re</string>
+    <string name="app_name">Pin Notify Notes</string>
     <string name="save_note_text">Sauvegarder</string>
     <string name="title_hint">Titre</string>
     <string name="text_hint">Texte de la note</string>

@@ -6,7 +6,7 @@ android {
     defaultConfig {
         applicationId "com.notification.notificationnotes"
         minSdkVersion 15
-        targetSdkVersion 35 // 最新のターゲットSDK
+        targetSdkVersion 35
         versionCode 9
         versionName "1.8"
     }

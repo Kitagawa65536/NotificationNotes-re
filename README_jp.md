@@ -1,13 +1,13 @@
-# NotificationNotes-Re (NotificationNotes Forked)
+# Pin Notify Notes (NotificationNotes Forked)
 
 このプロジェクトは、シンプルな通知メモアプリ **Notification Notes** のフォーク版です。  
 オリジナルリポジトリ: [khuttun/NotificationNotes](https://github.com/khuttun/NotificationNotes)
 
 ---
 
-## NotificationNotesとは？
+## Pin Notify Notesとは？
 
-Notification Notesは、Androidの通知を活用してメモを表示するためのシンプルなアプリです。  
+Pin Notify Notesは、Androidの通知を活用してメモを表示するためのシンプルなアプリです。  
 作成したメモは低優先度の通知として表示され、アプリを再起動しても通知は保持されます。
 
 ---
@@ -37,9 +37,9 @@ Notification Notesは、Androidの通知を活用してメモを表示するた�
 
 ## インストール方法
 
-ストア公開の正式な予定は何も決まっていません
+ストア公開の正式な予定は何も決まっていません。
 
-1. リリースページ(できたら)からAPKをダウンロード
+1. リリースページ（公開時に追加予定）からAPKをダウンロード
 2. ご自身のデバイスにインストール
 
 ---
@@ -49,6 +49,4 @@ Notification Notesは、Androidの通知を活用してメモを表示するた�
 このプロジェクトはオリジナルのライセンス (MIT License) に従い提供されます。  
 オリジナルリポジトリ: [khuttun/NotificationNotes](https://github.com/khuttun/NotificationNotes)
 
-Copyright (c) [オリジナル作者名またはリポジトリリンク]  
-
-このフォークにおける保守・改善は[あなたの名前またはハンドルネーム]によって行われています。
+このフォークにおける保守・改善は[Kitagawa65536](https://github.com/Kitagawa65536)によって行われています。

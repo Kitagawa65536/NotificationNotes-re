@@ -10,6 +10,7 @@ import android.view.ViewGroup;
 import android.widget.CompoundButton;
 import android.widget.TextView;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.widget.SwitchCompat;
 import androidx.fragment.app.FragmentManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -23,9 +24,9 @@ class NotesListAdapter
         extends RecyclerView.Adapter<NotesListAdapter.ViewHolder>
         implements NotesController
 {
-    private Activity context;
-    private NotificationMgr notificationMgr;
-    private FragmentManager fragmentManager;
+    private final Activity context;
+    private final NotificationMgr notificationMgr;
+    private final FragmentManager fragmentManager;
     private ArrayList<NotificationNote> notes;
 
     /**
@@ -86,6 +87,7 @@ class NotesListAdapter
         this.notes = new ArrayList<>();
     }
 
+    @NonNull
     @Override
     public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType)
     {

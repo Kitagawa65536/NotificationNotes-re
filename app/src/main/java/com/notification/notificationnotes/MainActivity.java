@@ -11,18 +11,20 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 
+import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
+import java.util.Objects;
 
 public class MainActivity extends ThemedActivity {
     /**
      * Observe changes in notes list and display an alternate view if the list is empty.
      */
     private static class EmptyNoteListObserver extends RecyclerView.AdapterDataObserver {
-        private RecyclerView noteList;
-        private View alternateView;
+        private final RecyclerView noteList;
+        private final View alternateView;
 
         EmptyNoteListObserver(RecyclerView noteList, View alternateView) {
             this.noteList = noteList;
@@ -33,7 +35,7 @@ public class MainActivity extends ThemedActivity {
         @Override
         public void onChanged() {
             if (Globals.LOG)
-                Log.d(Globals.TAG, "List changed. Count " + noteList.getAdapter().getItemCount());
+                Log.d(Globals.TAG, "List changed. Count " + Objects.requireNonNull(noteList.getAdapter()).getItemCount());
             if (noteList.getAdapter().getItemCount() > 0) {
                 this.noteList.setVisibility(View.VISIBLE);
                 this.alternateView.setVisibility(View.GONE);
@@ -70,6 +72,7 @@ public class MainActivity extends ThemedActivity {
             this.noteIndex = noteIndex;
         }
 
+        @NonNull
         @Override
         public String toString() {
             return "{" + this.reqCode + ", " + this.title + ", " + this.text + ", " + this.noteIndex + "}";
@@ -143,10 +146,10 @@ public class MainActivity extends ThemedActivity {
     protected void onPause() {
         super.onPause();
         if (Globals.LOG) Log.d(Globals.TAG, "Pausing MainActivity");
-
+        // TODO:PreferenceManager.getDefaultSharedPreferences(this) -> getApplicationContext().getSharedPreferences(this.getPackageName() + "_preferences", Context.MODE_PRIVATE)
         SharedPreferences.Editor prefs = PreferenceManager.getDefaultSharedPreferences(this).edit();
         prefs.putString(Globals.NOTES_PREF_NAME, Globals.noteListToJson(this.notesListAdapter.getNotes()));
-        prefs.commit();
+        prefs.apply();
     }
 
     @Override
@@ -196,17 +199,17 @@ public class MainActivity extends ThemedActivity {
             // Store the combined notes
             SharedPreferences.Editor newPrefsEditor = PreferenceManager.getDefaultSharedPreferences(this).edit();
             newPrefsEditor.putString(Globals.NOTES_PREF_NAME, Globals.noteListToJson(notes));
-            newPrefsEditor.commit();
+            newPrefsEditor.apply();
 
             // Remove the old version
             SharedPreferences.Editor oldPrefsEditor = getPreferences(Context.MODE_PRIVATE).edit();
             oldPrefsEditor.remove(Globals.NOTES_PREF_NAME);
-            oldPrefsEditor.commit();
+            oldPrefsEditor.apply();
         }
     }
 
     @Override
-    public void onRequestPermissionsResult(int requestCode, String[] permissions, int[] grantResults) {
+    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults);
         if (requestCode == 1) {
             if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
