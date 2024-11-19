@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Notification Notes-Re</string>
+    <string name="save_note_text">保存</string>
+    <string name="title_hint">タイトル</string>
+    <string name="text_hint">本文</string>
+    <string name="no_notes">まだメモは追加されていません。</string>
+    <string name="dialog_delete_note">メモを削除</string>
+    <string name="delete">削除</string>
+    <string name="cancel">キャンセル</string>
+    <string name="new_note">新規ノート</string>
+    <string name="edit_note">ノートを編集</string>
+    <string name="settings">設定</string>
+    <string name="group_notif_setting_title">通知をまとめる</string>
+    <string name="group_notif_setting_summary">すべてのメモを1つの通知に表示する</string>
+    <string name="theme_setting_title">テーマ</string>
+    <string name="theme_setting_entry_light">ライト</string>
+    <string name="theme_setting_entry_dark">ダーク</string>
+</resources>
