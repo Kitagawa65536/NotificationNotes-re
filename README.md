@@ -1,4 +1,4 @@
-# Pin Notify Notes (NotificationNotes Forked)
+# Pin Notify Notes (OSS NotificationNotes Forked)
 
 This project is a fork of the simple notification memo app **Notification Notes**.  
 Original repository: [khuttun/NotificationNotes](https://github.com/khuttun/NotificationNotes)

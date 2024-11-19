@@ -1,4 +1,4 @@
-# Pin Notify Notes (NotificationNotes Forked)
+# Pin Notify Notes (OSS NotificationNotes Forked)
 
 このプロジェクトは、シンプルな通知メモアプリ **Notification Notes** のフォーク版です。  
 オリジナルリポジトリ: [khuttun/NotificationNotes](https://github.com/khuttun/NotificationNotes)

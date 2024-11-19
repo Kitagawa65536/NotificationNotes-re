@@ -7,8 +7,8 @@ android {
         applicationId "com.notification.notificationnotes"
         minSdkVersion 15
         targetSdkVersion 35
-        versionCode 9
-        versionName "1.8"
+        versionCode 10
+        versionName "1.8.1"
     }
     namespace "com.notification.notificationnotes"
 
