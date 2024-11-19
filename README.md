@@ -37,7 +37,7 @@ For now, no major feature additions or extensive changes are planned, unless pla
 
 ## How to Install
 
-There is no official schedule for the store launch yet.
+Play Store under review
 
 1. Download the APK from the Releases page (to be released at some point).
 2. Install it on your device.
