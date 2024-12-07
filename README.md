@@ -36,6 +36,8 @@ For now, no major feature additions or extensive changes are planned, unless pla
 ---
 
 ## How to Install
+- [Google Play Store](https://play.google.com/store/apps/details?id=com.notification.notificationnotes)
+
 
 Play Store under review
 
