@@ -46,6 +46,12 @@ Play Store under review
 
 ---
 
+## TODO
+- [ ] Investigating startup issues on Xiaomi devices
+- [ ] Removal and replacement of deprecated API
+
+---
+
 ## License
 
 This project is provided under the original MIT License.  
