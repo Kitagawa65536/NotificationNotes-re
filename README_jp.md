@@ -37,10 +37,16 @@ Pin Notify Notesは、Androidの通知を活用してメモを表示するため
 
 ## インストール方法
 
-プレイストアにて審査中です
+- [Google Play Store](https://play.google.com/store/apps/details?id=com.notification.notificationnotes)
 
 1. リリースページ（公開時に追加予定）からAPKをダウンロード
 2. ご自身のデバイスにインストール
+
+---
+
+## TODO
+- [ ] シャオミ端末等で起動しないなどの問題があるらしいので調査
+- [ ] 非推奨APIの削除や置き換え
 
 ---
 
