@@ -5,7 +5,7 @@
     <string name="title_hint">Title</string>
     <string name="text_hint">Note text</string>
     <string name="no_notes">No notes added yet.</string>
-    <string name="dialog_delete_note">Delete note</string>
+    <string name="dialog_delete_note" translatable="false">Delete note</string>
     <string name="delete">Delete</string>
     <string name="cancel">Cancel</string>
     <string name="new_note">New note</string>
@@ -15,6 +15,11 @@
     <string name="group_notif_title">Notes</string>
     <string name="group_notif_setting_title">Group notifications</string>
     <string name="group_notif_setting_summary">Display all notes in a single notification</string>
+    <string name="battery_optimization_dialog_title">On %1$s device, the battery optimization feature may automatically terminate the app.\n\nPlease set the following to ensure that the app works properly:\n\n• Exclude from battery optimization\n• Allow auto-start\n• Allow background operation\n\nDo you want to open the settings screen?</string>
+    <string name="important_notice">Important Notice</string>
+    <string name="open_settings">Open Settings</string>
+    <string name="open_later">later</string>
+    <string name="this_device">This</string>
     <string name="theme_setting_title">Theme</string>
     <string name="theme_setting_entry_light">Light</string>
     <string name="theme_setting_entry_dark">Dark</string>

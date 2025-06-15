@@ -15,10 +15,19 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.notification.notificationnotes.util.BatteryOptimizationDialog;
+import com.notification.notificationnotes.util.BatteryOptimizationHelper;
+import com.notification.notificationnotes.util.DeviceUtils;
+import com.notification.notificationnotes.util.MyPreferenceManager;
+
 import java.util.ArrayList;
 import java.util.Objects;
 
 public class MainActivity extends ThemedActivity {
+
+    private MyPreferenceManager preferenceManager;
+    private BatteryOptimizationHelper batteryHelper;
+
     /**
      * Observe changes in notes list and display an alternate view if the list is empty.
      */
@@ -124,6 +133,11 @@ public class MainActivity extends ThemedActivity {
         this.noteListObserver = new EmptyNoteListObserver(noteListView, findViewById(R.id.empty_text_view));
 
         migratePreferences();
+
+        preferenceManager = new MyPreferenceManager(this);
+        batteryHelper = new BatteryOptimizationHelper(this);
+
+        checkAndShowBatteryOptimizationDialog();
     }
 
     @Override
@@ -228,4 +242,27 @@ public class MainActivity extends ThemedActivity {
             }
         }
     }
+
+    private void checkAndShowBatteryOptimizationDialog() {
+        if (preferenceManager.isFirstLaunch() &&
+                DeviceUtils.hasAggressiveBatteryOptimization() &&
+                !batteryHelper.isIgnoringBatteryOptimizations()) {
+
+            BatteryOptimizationDialog.showDialog(this, new BatteryOptimizationDialog.DialogCallback() {
+                @Override
+                public void onSettingsClicked() {
+                    batteryHelper.requestIgnoreBatteryOptimizations(MainActivity.this);
+                    preferenceManager.setBatteryOptimizationDialogShown();
+                    preferenceManager.setFirstLaunchCompleted();
+                }
+
+                @Override
+                public void onDismissed() {
+                    preferenceManager.setBatteryOptimizationDialogShown();
+                    preferenceManager.setFirstLaunchCompleted();
+                }
+            });
+        }
+    }
+
 }
