@@ -13,6 +13,11 @@
     <string name="settings">設定</string>
     <string name="group_notif_setting_title">通知をまとめる</string>
     <string name="group_notif_setting_summary">すべてのメモを1つの通知に表示する</string>
+    <string name="battery_optimization_dialog_title">%1$sデバイスでは、バッテリー最適化機能によりアプリが自動的に終了することがあります。\n\nアプリが正常に動作するには、以下を設定してください:\n\n• バッテリー最適化から除外する\n• 自動起動を許可する\n• バックグラウンド操作を許可する\n\n設定画面を開きますか？</string>
+    <string name="important_notice">Important Notice</string>
+    <string name="open_settings">設定を開く</string>
+    <string name="open_later">あとで</string>
+    <string name="this_device">この</string>
     <string name="theme_setting_title">テーマ</string>
     <string name="theme_setting_entry_light">ライト</string>
     <string name="theme_setting_entry_dark">ダーク</string>
