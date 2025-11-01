@@ -1,14 +1,14 @@
 apply plugin: 'com.android.application'
 
 android {
-    compileSdkVersion 35
+    compileSdkVersion 36
 
     defaultConfig {
         applicationId "com.notification.notificationnotes"
         minSdkVersion 15
-        targetSdkVersion 35
-        versionCode 11
-        versionName "1.8.2"
+        targetSdkVersion 36
+        versionCode 12
+        versionName "1.8.3"
     }
     namespace "com.notification.notificationnotes"
 
