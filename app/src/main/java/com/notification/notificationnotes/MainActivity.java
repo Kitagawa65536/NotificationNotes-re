@@ -4,6 +4,8 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
+import android.graphics.Color;
+import android.os.Build;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.util.Log;
@@ -12,6 +14,9 @@ import android.view.MenuItem;
 import android.view.View;
 
 import androidx.annotation.NonNull;
+import androidx.core.graphics.ColorUtils;
+import androidx.core.view.WindowCompat;
+import androidx.core.view.WindowInsetsControllerCompat;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -117,6 +122,7 @@ public class MainActivity extends ThemedActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        configureSystemBars();
         if (Globals.LOG) Log.d(Globals.TAG, "Creating MainActivity");
         setContentView(R.layout.activity_main);
 
@@ -262,6 +268,24 @@ public class MainActivity extends ThemedActivity {
                     preferenceManager.setFirstLaunchCompleted();
                 }
             });
+        }
+    }
+
+    private void configureSystemBars() {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+
+            WindowCompat.setDecorFitsSystemWindows(getWindow(), true);
+
+            int statusBarColor = ColorUtils.blendARGB(Color.WHITE, Color.parseColor("#6E50B6"), 0.12f);
+            int navigationBarColor = Color.parseColor("#F0ECF7");
+
+            getWindow().setStatusBarColor(statusBarColor);
+            getWindow().setNavigationBarColor(navigationBarColor);
+
+            WindowInsetsControllerCompat windowInsetsController =
+                    new WindowInsetsControllerCompat(getWindow(), getWindow().getDecorView());
+            windowInsetsController.setAppearanceLightStatusBars(true);
+            windowInsetsController.setAppearanceLightNavigationBars(true);
         }
     }
 
