@@ -1,0 +1,10 @@
+<!-- res/values-v35/themes.xml (API 35 専用オーバーライド) -->
+<resources>
+    <style name="AppTheme" parent="Theme.MaterialComponents.Light.NoActionBar">
+        <!-- API 35+: Edge-to-Edge 前提で透明に設定 -->
+        <item name="android:statusBarColor">@android:color/transparent</item>
+        <item name="android:navigationBarColor">@android:color/transparent</item>
+        <!-- 三ボタンナビの半透明スクリームを無効化（任意） -->
+        <item name="android:enforceNavigationBarContrast">false</item>
+    </style>
+</resources>

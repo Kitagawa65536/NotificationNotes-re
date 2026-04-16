@@ -272,8 +272,8 @@ public class MainActivity extends ThemedActivity {
     }
 
     private void configureSystemBars() {
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-
+        // Direct color settings are disabled in API 35 and above, so they rely on theme settings.
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP && Build.VERSION.SDK_INT < 35) {
             WindowCompat.setDecorFitsSystemWindows(getWindow(), true);
 
             int statusBarColor = ColorUtils.blendARGB(Color.WHITE, Color.parseColor("#6E50B6"), 0.12f);
@@ -286,7 +286,13 @@ public class MainActivity extends ThemedActivity {
                     new WindowInsetsControllerCompat(getWindow(), getWindow().getDecorView());
             windowInsetsController.setAppearanceLightStatusBars(true);
             windowInsetsController.setAppearanceLightNavigationBars(true);
+        } else if (Build.VERSION.SDK_INT >= 35) {
+            // API 35+: Edge-to-Edge forced, so only icon display is controlled.
+            WindowInsetsControllerCompat windowInsetsController =
+                    new WindowInsetsControllerCompat(getWindow(), getWindow().getDecorView());
+            windowInsetsController.setAppearanceLightStatusBars(true);
+            windowInsetsController.setAppearanceLightNavigationBars(true);
+            // Colors are defined in the theme (res/values/themes.xml).
         }
     }
-
 }
