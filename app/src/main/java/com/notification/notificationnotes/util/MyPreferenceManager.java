@@ -8,7 +8,7 @@ public class MyPreferenceManager {
     private static final String KEY_FIRST_LAUNCH = "is_first_launch";
     private static final String KEY_BATTERY_DIALOG = "show_battery_dialog";
 
-    private SharedPreferences prefs;
+    private final SharedPreferences prefs;
 
     public MyPreferenceManager(Context context) {
         this.prefs = context.getSharedPreferences(PREF_NAME, Context.MODE_PRIVATE);

@@ -3,7 +3,6 @@ package com.notification.notificationnotes;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
-import android.preference.PreferenceManager;
 import android.util.Log;
 
 import java.util.ArrayList;
@@ -16,14 +15,14 @@ public class BootCompletedReceiver extends BroadcastReceiver
     @Override
     public void onReceive(Context context, Intent intent)
     {
-        ArrayList<NotificationNote> notes = Globals.jsonToNoteList(PreferenceManager
+        ArrayList<NotificationNote> notes = Globals.jsonToNoteList(androidx.preference.PreferenceManager
                 .getDefaultSharedPreferences(context).getString(Globals.NOTES_PREF_NAME, "[]"));
 
         if (Globals.LOG) Log.d(Globals.TAG, "Boot completed, " + notes.size() + " notes");
 
         NotificationMgr notificationMgr = new NotificationMgr(context);
 
-        if (PreferenceManager.getDefaultSharedPreferences(context).getBoolean(context
+        if (androidx.preference.PreferenceManager.getDefaultSharedPreferences(context).getBoolean(context
                 .getString(R.string.group_notif_pref_key), false))
         {
             notificationMgr.setGroupNotification(notes);

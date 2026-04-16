@@ -1,7 +1,6 @@
 package com.notification.notificationnotes;
 
 import android.os.Bundle;
-import android.preference.PreferenceManager;
 import android.util.Log;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -43,7 +42,7 @@ public class ThemedActivity extends AppCompatActivity
 
     private String getSelectedTheme()
     {
-        return PreferenceManager.getDefaultSharedPreferences(this).getString(
+        return androidx.preference.PreferenceManager.getDefaultSharedPreferences(this).getString(
                 getString(R.string.theme_pref_key),
                 getString(R.string.theme_pref_value_default));
     }

@@ -25,10 +25,17 @@ public class DeleteNoteDialogFragment extends DialogFragment
     @Override
     public Dialog onCreateDialog(Bundle savedInstanceState)
     {
-        final int notePos = getArguments().getInt("notePos");
-        final String noteTitle = getArguments().getString("noteTitle");
+        final int notePos;
+        final String noteTitle;
+        if (getArguments() != null) {
+            notePos = getArguments().getInt("notePos");
+            noteTitle = getArguments().getString("noteTitle");
+        } else {
+            notePos = 0;
+            noteTitle = "";
+        }
         final String deletePrompt = getResources().getString(R.string.dialog_delete_note);
-        final String dialogText = noteTitle.isEmpty() ?
+        final String dialogText = (noteTitle != null && noteTitle.isEmpty()) ?
             deletePrompt + "?" : deletePrompt + " \"" + noteTitle + "\"?";
 
         AlertDialog.Builder builder = new AlertDialog.Builder(requireActivity());

@@ -7,7 +7,6 @@ import android.content.pm.PackageManager;
 import android.graphics.Color;
 import android.os.Build;
 import android.os.Bundle;
-import android.preference.PreferenceManager;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -166,8 +165,7 @@ public class MainActivity extends ThemedActivity {
     protected void onPause() {
         super.onPause();
         if (Globals.LOG) Log.d(Globals.TAG, "Pausing MainActivity");
-        // TODO:PreferenceManager.getDefaultSharedPreferences(this) -> getApplicationContext().getSharedPreferences(this.getPackageName() + "_preferences", Context.MODE_PRIVATE)
-        SharedPreferences.Editor prefs = PreferenceManager.getDefaultSharedPreferences(this).edit();
+        SharedPreferences.Editor prefs = androidx.preference.PreferenceManager.getDefaultSharedPreferences(this).edit();
         prefs.putString(Globals.NOTES_PREF_NAME, Globals.noteListToJson(this.notesListAdapter.getNotes()));
         prefs.apply();
     }
@@ -178,7 +176,7 @@ public class MainActivity extends ThemedActivity {
         if (Globals.LOG) Log.d(Globals.TAG, "Resuming MainActivity");
 
         this.notesListAdapter.setNotes(Globals.jsonToNoteList(
-                PreferenceManager.getDefaultSharedPreferences(this).getString(Globals.NOTES_PREF_NAME, "[]")));
+                androidx.preference.PreferenceManager.getDefaultSharedPreferences(this).getString(Globals.NOTES_PREF_NAME, "[]")));
 
         // Unprocessed result from "Add note" activity
         if (this.addNoteResult != null) {
@@ -206,7 +204,7 @@ public class MainActivity extends ThemedActivity {
             if (Globals.LOG) Log.d(Globals.TAG, "Migrating old notes pref");
 
             // Take into account also possibility that there's already notes stored to the new storage
-            String newPref = PreferenceManager.getDefaultSharedPreferences(this).getString(
+            String newPref = androidx.preference.PreferenceManager.getDefaultSharedPreferences(this).getString(
                     Globals.NOTES_PREF_NAME,
                     "[]");
 
@@ -217,7 +215,7 @@ public class MainActivity extends ThemedActivity {
             if (Globals.LOG) Log.d(Globals.TAG, notes.size() + " notes stored total");
 
             // Store the combined notes
-            SharedPreferences.Editor newPrefsEditor = PreferenceManager.getDefaultSharedPreferences(this).edit();
+            SharedPreferences.Editor newPrefsEditor = androidx.preference.PreferenceManager.getDefaultSharedPreferences(this).edit();
             newPrefsEditor.putString(Globals.NOTES_PREF_NAME, Globals.noteListToJson(notes));
             newPrefsEditor.apply();
 

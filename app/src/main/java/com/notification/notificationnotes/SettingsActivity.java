@@ -1,7 +1,7 @@
 package com.notification.notificationnotes;
 
+
 import android.content.SharedPreferences;
-import android.preference.PreferenceManager;
 import android.os.Bundle;
 import android.util.Log;
 
@@ -25,7 +25,7 @@ public class SettingsActivity extends ThemedActivity implements SharedPreference
     {
         super.onPause();
         if (Globals.LOG) Log.d(Globals.TAG, "Pausing SettingsActivity");
-        PreferenceManager.getDefaultSharedPreferences(this).unregisterOnSharedPreferenceChangeListener(this);
+        androidx.preference.PreferenceManager.getDefaultSharedPreferences(this).unregisterOnSharedPreferenceChangeListener(this);
     }
 
     @Override
@@ -33,7 +33,7 @@ public class SettingsActivity extends ThemedActivity implements SharedPreference
     {
         super.onResume();
         if (Globals.LOG) Log.d(Globals.TAG, "Resuming SettingsActivity");
-        PreferenceManager.getDefaultSharedPreferences(this).registerOnSharedPreferenceChangeListener(this);
+        androidx.preference.PreferenceManager.getDefaultSharedPreferences(this).registerOnSharedPreferenceChangeListener(this);
     }
 
     @Override
@@ -46,7 +46,7 @@ public class SettingsActivity extends ThemedActivity implements SharedPreference
 
             // Clear all existing notifications and set them again using the new setting value
             this.notificationMgr.clearAllNotifications();
-            ArrayList<NotificationNote> notes = Globals.jsonToNoteList(PreferenceManager
+            ArrayList<NotificationNote> notes = Globals.jsonToNoteList(androidx.preference.PreferenceManager
                     .getDefaultSharedPreferences(this).getString(Globals.NOTES_PREF_NAME, "[]"));
             if (settingVal)
             {

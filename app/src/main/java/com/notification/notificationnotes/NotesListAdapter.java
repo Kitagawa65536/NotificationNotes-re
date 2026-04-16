@@ -2,7 +2,6 @@ package com.notification.notificationnotes;
 
 import android.app.Activity;
 import android.content.Intent;
-import android.preference.PreferenceManager;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -202,7 +201,7 @@ class NotesListAdapter
 
     private void setNotification(NotificationNote n)
     {
-        if (PreferenceManager.getDefaultSharedPreferences(this.context).getBoolean(this.context
+        if (androidx.preference.PreferenceManager.getDefaultSharedPreferences(this.context).getBoolean(this.context
                 .getString(R.string.group_notif_pref_key), false))
         {
             this.notificationMgr.setGroupNotification(this.notes);
